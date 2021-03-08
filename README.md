@@ -40,7 +40,7 @@ Screenshot 2021-03-08 at 16.23.30![image](https://user-images.githubusercontent.
 
 # Controllers 
 1. Auth Rest Api is responsible to login (http://localhost:8080/login)
-2. TodoListController retrieves, creates, updates and delete a todolist (http:localhost:8080/lists)
+2. TodoListController retrieves, creates, updates and delete a todolist (http://localhost:8080/lists)
 3. TodoController retrieves, creates, updates and delete a todo item (http://localhost:8080/todos)
 
 Spring Security is used for security implementation (WebSecurityConfig). JWT token (JwtResponse) is generated once the user credential is validated.
