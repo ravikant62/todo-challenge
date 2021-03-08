@@ -28,10 +28,10 @@ public class JwtProvider {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtProvider.class);
 
-    @Value("${loizenai.app.jwtSecret}")
+    @Value("${app.jwtSecret}")
     private String jwtSecret;
 
-    @Value("${loizenai.app.jwtExpiration}")
+    @Value("${app.jwtExpiration}")
     private int jwtExpiration;
 
     public String generateJwtToken(Authentication authentication) {
