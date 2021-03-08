@@ -4,7 +4,8 @@
 
 H2 is used as embedded database      
 This is a maven project built with maven 3.6.1,Java version: 1.8.0_211  .        
-Project can be built using command line : mvn clean install.    
+Project can be built using command line : mvn clean install.
+To run the application using command line : mvn spring-boot:run
 Server runs on 8080 port number
 
 
@@ -29,3 +30,7 @@ to a default user list, at list one user e.g. with username: test, password: pwd
 5. Each task should display the date of last updates and description
 6. User can check/uncheck any task on their list
 7. Consider performance
+
+# Project Structure
+Screenshot 2021-03-08 at 16.23.30![image](https://user-images.githubusercontent.com/34513404/110349659-d0808f00-802a-11eb-995f-89dc526aefda.png)
+
