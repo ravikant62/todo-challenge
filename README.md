@@ -39,9 +39,9 @@ to a default user list, at list one user e.g. with username: test, password: pwd
 Screenshot 2021-03-08 at 16.23.30![image](https://user-images.githubusercontent.com/34513404/110349659-d0808f00-802a-11eb-995f-89dc526aefda.png)
 
 # Controllers 
-Auth Rest Api is responsible to login (http://localhost:8080/login)
-TodoListController retrieves, creates, updates and delete a todolist (http:localhost:8080/lists)
-TodoController retrieves, creates, updates and delete a todo item (http://localhost:8080/todos)
+1. Auth Rest Api is responsible to login (http://localhost:8080/login)
+2. TodoListController retrieves, creates, updates and delete a todolist (http:localhost:8080/lists)
+3. TodoController retrieves, creates, updates and delete a todo item (http://localhost:8080/todos)
 
 Spring Security is used for security implementation (WebSecurityConfig). JWT token (JwtResponse) is generated once the user credential is validated.
 Cors is used to allow angular application to consume api response.
