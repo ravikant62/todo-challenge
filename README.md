@@ -52,5 +52,6 @@ I ran out of time to implement each unit test case, so instead implemented end t
 # Would like to implement
 1. Caching
 2. Expose endpoint for creating, updating, disabling users.
+3. Implement standard password encoder for password
 
 
