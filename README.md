@@ -1,46 +1,55 @@
-# SpringBoot Token Based Authentication Example – MySQL + JWT+ Spring JPA + RestAPIs
+# ProgressSoft
 
-Tutorial Link: [SpringBoot Token Based Authentication Example](https://loizenai.com/spring-boot-security-jwt-token-bsed-authentication-example-mysql-spring-jpa-restapis/)
+# How to build/run it
 
-![SpringBoot Token Based Authentication Example](https://loizenai.com/wp-content/uploads/2020/05/Spring-Boot-Security-JWT-Token-Based-Authentication-Example-MySQL-Spring-JPA-RestAPIs.png)
+Setup MySQL on your local environment. Create schema "deals .       
+This is a maven project built with maven 3.5.0,Java version: 1.8.0_131  .        
+Project can be built using command line : mvn clean install  .   
+To run the application using command line : mvn spring-boot:run .  
+Application is accessible at :  
+1. Upload page - http://localhost:8080/upload
+2. Search page - http://localhost:8080/search  ( Caching implemented )
 
-“How to build SpringBoot Token Based Authentication Example?” is one of the most common questions for Java development world. So in the tutorial, I will introduce how to build it with clearly architecture and coding examples.
 
-## Video Guide
+# Technology Used
 
-[![Video guide SpringBoot JWT authentication](https://img.youtube.com/vi/opd2tYTsDDI/0.jpg)](https://www.youtube.com/watch?v=opd2tYTsDDI)
+Java 8 , Spring boot 1.5.10 , Maven 3.5.0 , Spring boot JPA  , Spring boot thymeleaf , Spring Caching , MySQL           
+Operating System : macOS Sierra 10.12.3
 
-## Spring Security JWT Architecture – Springboot Token Based Authentication Example
+# Problem Statement
 
-This is diagram for Spring Security/JWT (Springboot Token Based Authentication Example) classes that are separated into 3 layers:
-– HTTP
-– Spring Security
-– REST API
+Clustered Data Warehouse
 
-![Spring Security JWT Architecture](https://loizenai.com/wp-content/uploads/2020/05/Spring-Security-Jwt-Authentication-Architecture-Diagram.png)
+Suppose you are part of a scrum team developing data warehouse for Bloomberg to analyze FX deals. One of customer stories is to import deals details from files into DB. The requested performance is to be able to import the file containing 100,000 records in less than 5 seconds.
 
-Look at the diagram above, we can easily associate these components with Spring Security Authentication process: receive HTTP request, filter, authenticate, store Authentication data, generate token, get User details, authorize, handle exception…
 
-## PROJECT STRUCTURE FOR SPRINGBOOT TOKEN BASED AUTHENTICATION EXAMPLE
+Request logic as following :
 
-![SPRINGBOOT TOKEN BASED AUTHENTICATION EXAMPLE](https://loizenai.com/wp-content/uploads/2020/05/Springboot-Jwt-Authentication-Project-Structure.png)
+File format is CSV contains the following fields (Deal Unique Id, From Currency ISO Code "Ordering Currency", To Currency ISO Code, Deal timestamp, Deal Amount in ordering currency).
+Validate row structure.(e.g: Missing fields, Type format..etc. We do not expect you to cover all possible cases but we'll look to how you'll implement validations)
+Valid rows should be stored in table/document, with reference to source file name .
+Invalid rows should be stored into another table/document, with reference to source file name.
+The DB contains another table to maintain accumulative count of deals per Ordering Currency "Columns : Currency ISO Code, CountOfDeals ", so upon completion of importing process the system should increase count of deals per currency.
+System should not import same file twice.
+No rollback allowed, what every rows imported should be saved in DB.
 
-– model package defines 2 entities User & Role that have many-to-many relationship:
+Technical Specs :
 
-![Springboot Restapi Jwt Json Web Token Authentication Many To Many User-Role](https://loizenai.com/wp-content/uploads/2020/05/Springboot-Restapi-Jwt-Json-Web-Token-Authentication-Many-To-Many-User-Role.png)
+Access to DB should be through JPA.
+For DB type, you can select between (MySql or MongoDB)
+Provide a web interface for uploading files and inquire about results "using filename" following web applications 3 tier architecture. Spring Batch is not allowed.
+Provide a web interface for inquire about results "using filename" .·
+We expect you to generate sample data set to use it during development
+We expect the system to display a summary report for each file after process is finished; summary may contain process duration, number of imported deals and number of invalid records.
+We expect you to generate sample data set to use it during development. 
 
-– repository package contains interfaces that use Hibernate JPA to store/retrieve data from MySQL database.
-– controller package defines RestAPIs for user signup/signin and testing protected resources that is secured with JWT.
-– message package defines payload data transferred from user agents (Browser/RestClient…) to RestAPIs and message back.
-– security package is the main part of the project that implements JWT security.
+Deliverables should be ready to work including :
 
-## GOAL
-In the tutorial “Springboot Token Based Authentication Example”, we expose 2 RestAPIs to signup and signin:
-
-![Springboot Jwt Authentication – Register User Phrase](https://loizenai.com/wp-content/uploads/2020/05/springboot-jwt-authentication-register-user-phrase-jack-user.png)
-
-## Related posts:
-
-- [Angular CRUD Application with SpringBoot and MySQL/PostgreSQL RestAPIs](https://loizenai.com/angular-crud-application-with-springboot-and-mysql-postgresql-restapis-fullstack-angular-httpclient-post-get-put-delete/)
-- [SpringBoot Upload Download Multiple Files Examples with Thymeleaf](https://loizenai.com/springboot-upload-multiple-files-examples-with-thymeleaf/)
-- [Build SpringBoot CRUD Application – FullStack: Frontend (Bootstrap and Ajax) to Backend (SpringBoot and MySQL/PostgreSQL database)](https://loizenai.com/build-springboot-crud-application-fullstack-frontend-bootstrap-and-ajax-to-backend-springboot-and-mysql-postgresql-database/)
+Workable deployment including sample file.
+Deployment steps including sample data of 100K records, contains all invalid/valid records that the system handles.
+Maven or Gradle project is required for full source code.
+Proper error/exception handling.
+Proper Logging.
+It is essential to follow TDD and include unit testing of your code and provide it as part of the assignment, noting that this will be one of the major assessment points, minimum code coverage should be 70%.
+It is preferred to deliver via github or bitbucket repository.
+Provide deployment as a Vagrant or Docker is a plus.
